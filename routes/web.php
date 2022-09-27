@@ -14,5 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.homepage');
+});
+
+Route::get('/signup', function () {
+    return view('pages.signup-signin');
+});
+
+Route::get('/profile', function () {
+    return view('pages.profile');
+});
+
+Route::get('/add-climb', function () {
+    return view('pages.add-climb');
+});
+
+Route::get('/all-climbs', function () {
+    return view('pages.all-climbs');
 });
