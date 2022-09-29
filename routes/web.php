@@ -32,3 +32,7 @@ Route::get('/add-climb', function () {
 Route::get('/view-climbs', function () {
     return view('pages.view-climbs');
 });
+
+Route::get('/single-climb', function () {
+    return view('pages.single-climb');
+});
