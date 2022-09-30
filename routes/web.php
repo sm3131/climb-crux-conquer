@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClimbController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,11 @@ Route::get('/add-climb', function () {
     return view('pages.add-climb');
 });
 
-Route::get('/view-climbs', function () {
-    return view('pages.view-climbs');
-});
+// Route::get('/view-climbs', function () {
+//     return view('pages.view-climbs');
+// });
+
+Route::get('/view-climbs', [ClimbController::class, 'show']);
 
 Route::get('/single-climb', function () {
     return view('pages.single-climb');
