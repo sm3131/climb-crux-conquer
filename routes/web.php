@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClimbController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,11 @@ Route::get('/signup', function () {
     return view('pages.signup-signin');
 });
 
-Route::get('/my-climbs', function () {
-    return view('pages.my-climbs');
-});
+// Route::get('/my-climbs', function () {
+//     return view('pages.my-climbs');
+// });
+
+Route::get('/my-climbs/{user_id}', [UserController::class, 'show']);
 
 Route::get('/add-climb', function () {
     return view('pages.add-climb');
