@@ -37,8 +37,8 @@ Route::get('/add-climb', function () {
 //     return view('pages.view-climbs');
 // });
 
-Route::get('/view-climbs', [ClimbController::class, 'show']);
+Route::get('/view-climbs', [ClimbController::class, 'index']);
 
-Route::get('/single-climb', function () {
-    return view('pages.single-climb');
-});
+Route::get('/single-climb/{climb_id}', [ClimbController::class, 'show']);
+
+Route::post('/add-climb', [ClimbController::class, 'store']);
