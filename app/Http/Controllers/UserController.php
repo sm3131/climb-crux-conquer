@@ -15,9 +15,5 @@ class UserController extends Controller
             return view('pages.my-climbs', [
                 'userClimbs' => $user_data
             ]);
-
-            // return view('pages.view-climbs', [
-            //     'hello' => 'Hello World!!!'
-            // ]);
     }
 }

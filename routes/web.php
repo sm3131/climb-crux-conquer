@@ -24,25 +24,17 @@ Route::get('/signup', function () {
     return view('pages.signup-signin');
 });
 
-// Route::get('/my-climbs', function () {
-//     return view('pages.my-climbs');
-// });
-
-Route::get('/my-climbs/{user_id}', [UserController::class, 'show']);
-
 Route::get('/add-climb', function () {
     return view('pages.add-climb');
 });
 
-Route::get('edit-climb/{climb_id}', [ClimbController::class, 'edit']);
-
-// Route::get('/view-climbs', function () {
-//     return view('pages.view-climbs');
-// });
-
 Route::get('/view-climbs', [ClimbController::class, 'index']);
 
 Route::get('/single-climb/{climb_id}', [ClimbController::class, 'show']);
+
+Route::get('/my-climbs/{user_id}', [UserController::class, 'show']);
+
+Route::get('edit-climb/{climb_id}', [ClimbController::class, 'edit']);
 
 Route::post('/add-climb', [ClimbController::class, 'store']);
 

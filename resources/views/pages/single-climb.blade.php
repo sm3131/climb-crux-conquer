@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="flex flex-col bg-slate-blue">
-        <img class="m-4 w-1/2 self-center" src="{{ URL::asset('images/mr.slate.png') }}"
-            alt="rock climbing route mr.slate in flagstaff, az">
+            <img class="m-4 w-1/2 self-center" src="{{ asset('storage/' . $climb->climb_image) }}" alt="{{$climb->climb_name}} rock climbing route at {{$climb->climb_location}}">
         <div class="flex flex-row justify-around text-gray text-2xl">
             <h3>{{ $climb->climb_name }}</h3>
             <h3>{{ $climb->climb_location }}</h3>

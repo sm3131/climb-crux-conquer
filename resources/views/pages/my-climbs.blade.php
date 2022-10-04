@@ -23,6 +23,6 @@
                 <input class="bg-slate-blue border-2 rounded-md p-1 w-28" type="submit" value="Update Status">
             </div>
         @endforeach
-        <a href="/add-climb" class="self-center border-2 bg-orange rounded-md w-32 p-3 m-2 text-xl text-center">Add A Climb</a>
+        <a href="/view-climbs" class="self-center border-2 bg-orange rounded-md w-32 p-3 m-2 text-xl text-center">Save A Climb</a>
     </div>
 @endsection
