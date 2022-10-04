@@ -15,6 +15,7 @@ class Climb extends Model
         'climb_style',
         'climb_grade',
         'climb_description',
+        'climb_image',
         'climb_status',
         'likes'
     ];

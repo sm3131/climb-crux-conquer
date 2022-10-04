@@ -648,6 +648,9 @@ video {
 .p-1 {
   padding: 0.25rem;
 }
+.p-4 {
+  padding: 1rem;
+}
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -730,6 +733,14 @@ video {
 }
 .underline-offset-2 {
   text-underline-offset: 2px;
+}
+.hover\:bg-gray:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(211 211 211 / var(--tw-bg-opacity));
+}
+.hover\:bg-slate-blue:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(66 99 119 / var(--tw-bg-opacity));
 }
 @media (min-width: 640px) {
 

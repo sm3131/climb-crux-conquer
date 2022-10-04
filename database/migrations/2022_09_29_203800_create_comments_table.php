@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->text('body');
             $table->boolean('is_beta')->default(false);
-            $table->foreignId('climb_id')->constrained();
+            $table->foreignId('climb_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

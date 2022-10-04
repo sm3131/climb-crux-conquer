@@ -15,8 +15,8 @@ class CreateClimbUser extends Migration
     {
         Schema::create('climb_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('climb_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('climb_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

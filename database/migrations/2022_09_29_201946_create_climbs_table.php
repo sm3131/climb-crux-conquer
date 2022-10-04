@@ -20,6 +20,7 @@ class CreateClimbsTable extends Migration
             $table->enum('climb_style', ['Sport', 'Trad', 'Boulder', 'Mix', 'Ice', 'Aid']);
             $table->string('climb_grade', 10);
             $table->text('climb_description');
+            $table->string('climb_image')->nullable();
             $table->enum('climb_status', ['to-do', 'in-progress', 'completed', 'none']);
             $table->integer('likes')->nullable();
             $table->timestamps();

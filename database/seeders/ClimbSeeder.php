@@ -41,15 +41,24 @@ class ClimbSeeder extends Seeder
             'climb_status' => 'none',
             'likes' => 4,
         ],
-        // [
-        //     'climb_name' => '',
-        //     'climb_location' => '',
-        //     'climb_style' => '',
-        //     'climb_grade' => '',
-        //     'climb_description' => '',
-        //     'climb_status' => '',
-        //     'likes' => '',
-        // ],
+        [
+            'climb_name' => 'Popeye',
+            'climb_location' => 'The Pit / Flagstaff, AZ',
+            'climb_style' => 'Sport',
+            'climb_grade' => '5.9',
+            'climb_description' => 'Fun route with lots of good pockets; a bit pumpy toward the top!',
+            'climb_status' => 'none',
+            'likes' => 2,
+        ],
+        [
+            'climb_name' => 'Sacrificial Lizard',
+            'climb_location' => "Jack's Canyon / Winslow, AZ",
+            'climb_style' => 'Sport',
+            'climb_grade' => '5.11b/c',
+            'climb_description' => "This climb provides some technical balance moves through the crux. A little tricker for shorter climbers, but there are some helpful intermediate holds that can come in handy. The start is a little spicy, but then it lets up a bit before the crux. Careful though because the pump doesn't stop until the chains and it can be a heartbreaker.",
+            'climb_status' => 'none',
+            'likes' => 8,
+        ],
     ];
     
     public function run()
