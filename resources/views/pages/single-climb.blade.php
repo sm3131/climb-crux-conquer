@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="flex flex-col bg-slate-blue">
-        <img class="m-4 w-1/2 self-center" src="{{URL::asset('images/mr.slate.png')}}" alt="rock climbing route mr.slate in flagstaff, az">
+        <img class="m-4 w-1/2 self-center" src="{{ URL::asset('images/mr.slate.png') }}"
+            alt="rock climbing route mr.slate in flagstaff, az">
         <div class="flex flex-row justify-around text-gray text-2xl">
             <h3>{{ $climb->climb_name }}</h3>
             <h3>{{ $climb->climb_location }}</h3>
@@ -11,15 +12,26 @@
         <p class="text-center text-gray text-2xl p-2 mt-4">
             {{ $climb->climb_description }}
         </p>
+        <a href="/edit-climb/{{$climb->id}}" class="self-center text-orange border-2 rounded-sm bg-blue p-2 mt-4">
+            <i class="fa-solid fa-pen mr-2"></i>EDIT ClIMB!
+        </a>
         <div class="flex flex-col m-2">
             <h2 class="m-2 p-1 text-2xl text-gray">Comments & Beta</h2>
-            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment one about the climb. Extra text for viewing purposes!</p>
-            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment two about the climb. Extra text for viewing purposes!</p>
-            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment three about the climb. Extra text for viewing purposes!</p>
+            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment one about the climb. Extra text for viewing
+                purposes!</p>
+            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment two about the climb. Extra text for viewing
+                purposes!</p>
+            <p class="m-2 border-2 bg-orange rounded-md p-2 w-1/2">Comment three about the climb. Extra text for viewing
+                purposes!</p>
         </div>
-        <div class="self-center text-orange border-2 rounded-sm bg-blue p-2 m-4">
-          <i class="fa-solid fa-trash-can mr-2"></i>DELETE ClIMB!
-        </div>
+        <form class="self-center p-2 m-4" method="POST"
+            action="/delete-climb/{{ $climb->id }}/{{ $climb->climb_name }}">
+            @method('delete')
+            @csrf
+            <button type="submit" class="text-orange border-2 rounded-sm bg-blue p-2">
+                <i class="fa-solid fa-trash-can mr-2"></i>DELETE ClIMB!
+            </button>
+        </form>
     </div>
 @endsection
 

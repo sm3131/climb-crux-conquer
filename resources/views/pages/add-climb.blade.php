@@ -3,7 +3,7 @@
 @section('content')
     <div class=" flex flex-col gap-1 text-xl bg-slate-blue">
         <h1 class="p-2 text-3xl text-orange">Complete this form to submit a new climb to the site:</h1>
-        <form class="flex flex-col gap-6 bg-orange p-2 m-2 w-2/3 border-2" method='POST' action='/add-climb'>
+        <form class="flex flex-col gap-6 bg-orange p-2 m-2 w-2/3 border-2" method='POST' action='/add-climb' enctype="multipart/form-data">
         @csrf
             <div>
                 <label for="climb-name">Climb Name:</label>

@@ -4,7 +4,7 @@
         <a href="/"><img src="{{URL::asset('images/climb-header-logo.png')}}" alt="three angled and overlapping climbing carabiners" class="object-scale-down max-h-12"></a>
         <a href="/" class="pt-4 flex-initial">Home</a>
         <a href="/view-climbs" class="pt-4 flex-initial">View Climbs</a>
-        <a href="/my-climbs" class="pt-4 flex-initial">My Climbs</a>
+        <a href="/my-climbs/{{session('user_id')}}" class="pt-4 flex-initial">My Climbs</a>
         <a href="/signup" class="pt-4 flex-initial">Sign Up / Sign In</a>
         </div>
     </nav>
