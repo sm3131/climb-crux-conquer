@@ -15,7 +15,8 @@ module.exports = {
       'gray-blue': '#859daf',
       'slate-blue': '#426377',
       'forest-green': '#133d34',
-      'blue': '#144c74'
+      'blue': '#144c74',
+      'red': '#C41E3A',
     },
 
     extend: {

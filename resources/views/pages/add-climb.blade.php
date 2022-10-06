@@ -3,8 +3,16 @@
 @section('content')
     <div class=" flex flex-col gap-1 text-xl bg-slate-blue">
         <h1 class="p-2 text-3xl text-orange">Complete this form to submit a new climb to the site:</h1>
-        <form class="flex flex-col gap-6 bg-orange p-2 m-2 w-2/3 border-2" method='POST' action='/add-climb' enctype="multipart/form-data">
-        @csrf
+        @if (count($errors) > 0)
+            <div class="m-2">
+                @foreach ($errors->all() as $error)
+                    <p class="text-red text-2xl">{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+        <form class="flex flex-col gap-6 bg-orange p-2 m-2 w-2/3 border-2" method='POST' action='/add-climb'
+            enctype="multipart/form-data">
+            @csrf
             <div>
                 <label for="climb-name">Climb Name:</label>
                 <input type="text" id="climb-name" name="climb_name" placeholder=" Climb Name">
@@ -16,7 +24,8 @@
                 </div>
                 <div>
                     <label for="crag-location">Crag Location:</label>
-                    <input class="w-5/6" type="text" id="crag-location" name="crag_location" placeholder=" City, State OR City, Country">
+                    <input class="w-5/6" type="text" id="crag-location" name="crag_location"
+                        placeholder=" e.g Moab, UT OR Ceuse, FR">
                 </div>
             </div>
             <div class="flex flex-row gap-6">
@@ -33,12 +42,13 @@
                 </div>
                 <div>
                     <label for="climb-grade">Climb Grade:</label>
-                    <input type="text" id="climb-grade" name="climb_grade" placeholder=" 5.10a / V4 / A3">
+                    <input type="text" id="climb-grade" name="climb_grade" placeholder=" e.g. 5.10a / V4 / A3">
                 </div>
             </div>
             <div class="flex flex-row">
                 <label for="climb-description">Climb Description:</label>
-                <textarea class="m-2 w-2/3 h-2/3" type="text" id="climb-description" name="climb_description" placeholder="What is this climb all about?"></textarea>
+                <textarea class="m-2 w-2/3 h-2/3" type="text" id="climb-description" name="climb_description"
+                    placeholder="What is this climb all about?"></textarea>
             </div>
             <div>
                 <label for="climb-image">Upload A Climb Picture:</label>
