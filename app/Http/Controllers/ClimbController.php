@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Climb;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\ClimbServiceContract;
+use Illuminate\Validation\Rule;
 
 class ClimbController extends Controller
 {
-    //
+    public $climbService;
+
+    public function __construct(ClimbServiceContract $climbService)
+    {
+        $this->climbService = $climbService;
+    }
 
     public function index()
     {
@@ -26,18 +33,29 @@ class ClimbController extends Controller
 
     public function store(Request $request)
     {
-        $request->climb_image->store('public');
+        // Validation?
 
-        $climb = new Climb();
-        $climb->climb_name = $request->climb_name;
-        $climb->climb_location = $request->crag_name . '/ ' . $request->crag_location;
-        $climb->climb_style = $request->climb_style;
-        $climb->climb_grade = $request->climb_grade;
-        $climb->climb_description = $request->climb_description;
-        $climb->climb_image = $request->climb_image->hashName();
+        $validatedClimb = $request->validate([
+            'climb_name'        => ['required', 'string'],
+            'crag_name'         => ['required', 'string'],
+            'crag_location'     => ['required', 'string', 'regex: /[A-Za-z]+, [A-Za-z]{2}/'],
+            'climb_style'       => ['required', Rule::in([
+                'Sport', 'Trad', 'Boulder', 'Mix', 'Ice', 'Aid'
+            ]), 'string'],
+            'climb_grade'       => ['required', 'max:8', 'string'],
+            'climb_description' => ['required', 'string'],
+            'climb_image'       => ['nullable', 'image'],
+        ]);
 
-        $climb->save();
+        //trim after validation
 
+        if (array_key_exists('climb_image', $validatedClimb)) {
+            $this->climbService->storeClimbImage($validatedClimb['climb_image']);
+        }
+
+        $this->climbService->writeNewClimbToDatabase($validatedClimb);
+
+        // Do we get redirected?
         return redirect('/view-climbs');
     }
 

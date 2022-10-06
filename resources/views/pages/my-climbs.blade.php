@@ -2,14 +2,10 @@
 
 @section('content')
     <div class="flex flex-col bg-slate-blue">
-        {{-- {{dd($userClimbs)}} --}}
-        {{-- @php
-        echo $userClimbs->name;
-        @endphp --}}
         <h1 class="text-orange text-3xl m-4">{{ $userClimbs->name }}'s Climbs:</h1>
         @foreach ($userClimbs->climbs as $climb)
             <div class="flex flex-row justify-between bg-gray m-4 p-3 w-2/3 border-2 border-orange text-xl">
-                <a href="single-climb">
+                <a href="/single-climb/{{$climb->id}}">
                     <h2>{{ $climb->climb_name }}</h2>
                 </a>
                 <h2>{{ $climb->climb_style }} / {{ $climb->climb_grade }}</h2>
