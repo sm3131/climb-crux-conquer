@@ -4,7 +4,7 @@
     @if ($climb)
         <div class="flex flex-col bg-slate-blue">
             @if ($climb->climb_image)
-                <img class="m-4 w-1/2" src="{{ asset('storage/' . $climb->climb_image) }}"
+                <img class="m-4 w-1/2 self-center" src="{{ asset('storage/' . $climb->climb_image) }}"
                     alt="{{ $climb->climb_name }} rock climbing route at {{ $climb->climb_location }}">
             @else
             <div class="relative w-1/2 self-center">
