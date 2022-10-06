@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+       @php
+                $cragName = explode("/", $climb->climb_location)[0];
+                $cragLocation = trim(explode("/", $climb->climb_location)[1]);
+        @endphp
     <div class=" flex flex-col gap-1 text-xl bg-slate-blue">
         <h1 class="p-2 text-3xl text-orange">Edit the climb in the form below:</h1>
         <form class="flex flex-col gap-6 bg-orange p-2 m-2 w-2/3 border-2" method='POST' action='/update-climb/{{$climb->id}}' enctype="multipart/form-data">
@@ -10,10 +14,16 @@
                 <label for="climb-name">Climb Name:</label>
                 <input type="text" id="climb-name" name="climb_name" value="{{ $climb->climb_name }}">
             </div>
-            <div>
-                <label for="climb-location">Crag Location:</label>
-                <input class="w-5/6" type="text" id="climb-location" name="climb_location"
-                    value="{{$climb->climb_location}}">
+            <div class="flex flex-row gap-6">
+                <div>
+                    <label for="crag-name">Crag Name:</label>
+                    <input type="text" id="crag-name" name="crag_name" value="{{$cragName}}">
+                </div>
+                <div>
+                    <label for="crag-location">Crag Location:</label>
+                    <input class="w-5/6" type="text" id="crag-location" name="crag_location"
+                        value="{{$cragLocation}}">
+                </div>
             </div>
             <div class="flex flex-row gap-6">
                 <div>
