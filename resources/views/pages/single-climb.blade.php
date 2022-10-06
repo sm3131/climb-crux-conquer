@@ -7,10 +7,11 @@
                 <img class="m-4 w-1/2 self-center" src="{{ asset('storage/' . $climb->climb_image) }}"
                     alt="{{ $climb->climb_name }} rock climbing route at {{ $climb->climb_location }}">
             @else
-            <div class="relative w-1/2 self-center">
-                <img class="m-4" src="{{ asset('images/placeholder.png') }}" alt="placeholder image">
-                <h2 class="absolute text-3xl text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Click Edit Climb To Add An Image</h2>
-            </div>
+                <div class="relative w-1/2 self-center">
+                    <img class="m-4" src="{{ asset('images/placeholder.png') }}" alt="placeholder image">
+                    <h2 class="absolute text-3xl text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Click Edit
+                        Climb To Add An Image</h2>
+                </div>
             @endif
             <div class="flex flex-row justify-around text-gray text-2xl">
                 <h3>{{ $climb->climb_name }}</h3>

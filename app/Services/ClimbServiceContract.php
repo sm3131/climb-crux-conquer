@@ -6,5 +6,7 @@ interface ClimbServiceContract
 {
     public function storeClimbImage($image);
 
-    public function writeNewClimbToDatabase($request);
+    public function validateClimbFromUserInput($request);
+
+    public function writeClimbToDatabase($validClimb);
 }

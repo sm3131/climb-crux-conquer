@@ -35,25 +35,15 @@ class ClimbController extends Controller
     {
         // Validation?
 
-        $validatedClimb = $request->validate([
-            'climb_name'        => ['required', 'string'],
-            'crag_name'         => ['required', 'string'],
-            'crag_location'     => ['required', 'string', 'regex: /[A-Za-z]+, [A-Za-z]{2}/'],
-            'climb_style'       => ['required', Rule::in([
-                'Sport', 'Trad', 'Boulder', 'Mix', 'Ice', 'Aid'
-            ]), 'string'],
-            'climb_grade'       => ['required', 'max:8', 'string'],
-            'climb_description' => ['required', 'string'],
-            'climb_image'       => ['nullable', 'image'],
-        ]);
+        $validatedClimb = $this->climbService->validateClimbFromUserInput($request);
 
-        //trim after validation
+        //trim after validation?
 
         if (array_key_exists('climb_image', $validatedClimb)) {
             $this->climbService->storeClimbImage($validatedClimb['climb_image']);
         }
 
-        $this->climbService->writeNewClimbToDatabase($validatedClimb);
+        $this->climbService->writeClimbToDatabase($validatedClimb);
 
         // Do we get redirected?
         return redirect('/view-climbs');
@@ -71,21 +61,16 @@ class ClimbController extends Controller
 
     public function update(Request $request, $climb_id)
     {
-        if ($request->climb_image) {
-            $request->climb_image->store('public');
+
+        $validatedClimb = $this->climbService->validateClimbFromUserInput($request);
+
+        $validatedClimb['climb_id'] = $climb_id;
+
+        if (array_key_exists('climb_image', $validatedClimb)) {
+            $this->climbService->storeClimbImage($validatedClimb['climb_image']);
         }
 
-        $climb = Climb::where('id', $climb_id)->first();
-        $climb->climb_name = $request->climb_name;
-        $climb->climb_location = $request->climb_location;
-        $climb->climb_style = $request->climb_style;
-        $climb->climb_grade = $request->climb_grade;
-        $climb->climb_description = $request->climb_description;
-        if ($request->climb_image) {
-            $climb->climb_image = $request->climb_image->hashName();
-        }
-
-        $climb->save();
+        $this->climbService->writeClimbToDatabase($validatedClimb);
 
         return redirect('/view-climbs')->with('message', $request->climb_name . ' has successfully been updated!');
     }
